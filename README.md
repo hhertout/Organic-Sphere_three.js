@@ -4,7 +4,7 @@ Made to practice WebGL Shaders.
 
 Thanks to Stefan Gustavson for the perling noise algorithm. 
 
-- v1: 
+- Animated v1: 
 <img src="./resources/v1.png" width="400">
 
 ## Setup
