@@ -6,7 +6,6 @@ export default class Environment {
     protected experience
     public scene
     public sunLight?: DirectionalLight
-    public resources
     public environmentMap: any
     public debug
     public debugFolder
@@ -14,7 +13,6 @@ export default class Environment {
     constructor(experience: Experience) {
         this.experience = experience
         this.scene = this.experience.scene
-        this.resources = this.experience.resources
         this.debug = this.experience.debug
 
         if (this.debug.ui && this.debug.active)
@@ -62,7 +60,6 @@ export default class Environment {
     setEnvironmentMap() {
         this.environmentMap = {}
         this.environmentMap.intensity = 0.4
-        this.environmentMap.texture = this.resources.items.environmentMapTexture
         this.environmentMap.texture.encoding = THREE.sRGBEncoding
 
         this.scene.environment = this.environmentMap.texture

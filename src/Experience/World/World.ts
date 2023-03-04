@@ -1,35 +1,26 @@
 import Experience from "../Experience";
 import Environment from "./Environment";
-import Floor from "./Elements/Floor";
-import Fox from "./Elements/Fox";
+import Sphere from "./Elements/Sphere";
+import * as THREE from "three"
 
 export default class World {
     protected experience
     public scene
     public environment?: Environment
-    public resources
-    public floor?: Floor
-    public fox?: Fox
+    public sphere
 
     constructor(experience: Experience) {
         this.experience = experience
         this.scene = this.experience.scene
-        this.resources = this.experience.resources
 
+        // Elements
+        this.sphere = new Sphere(this.experience)
+        const sphereMesh = new THREE.Mesh(this.sphere.getGeometry(), this.sphere.getMaterial())
 
-        //Wait for resources
-        this.resources.on('ready', () => {
-            // Elements
-            this.floor = new Floor(this.experience)
-            this.fox = new Fox(this.experience)
-
-            // Environment
-            this.environment = new Environment(this.experience)
-        })
+        this.scene.add(sphereMesh)
     }
 
     update() {
-        if (this.fox)
-            this.fox.update()
+        this.sphere.update()
     }
 }

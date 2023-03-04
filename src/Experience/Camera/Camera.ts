@@ -22,14 +22,27 @@ export default class Camera {
     }
 
     setInstance() {
-        this.instance = new THREE.PerspectiveCamera(
+        this.instance = this.addPerspectiveCamera()
+        this.instance.position.set(3, 3, 3)
+        this.scene.add(this.instance)
+    }
+
+    addPerspectiveCamera() {
+        return new THREE.PerspectiveCamera(
             35,
             this.sizes.width / this.sizes.height,
             0.1,
             100)
+    }
 
-        this.instance.position.set(3, 3, 10)
-        this.scene.add(this.instance)
+    addOrthographicCamera() {
+        return new THREE.OrthographicCamera(
+            this.experience.sizes.width / - 2,
+            this.experience.sizes.width / 2,
+            this.experience.sizes.height / 2,
+            this.experience.sizes.height / - 2,
+            1,
+            1000 );
     }
 
     setOrbitControls() {

@@ -4,8 +4,6 @@ import * as THREE from "three"
 import Camera from "./Camera/Camera";
 import Renderer from "./Renderer/Renderer";
 import World from "./World/World";
-import Resources from "./Utils/Resources";
-import sources from "./Resources/sources"
 import Debug from "./Utils/Debug";
 import {Object3D} from "three";
 
@@ -18,7 +16,6 @@ export default class Experience {
     public camera
     public renderer
     public world
-    public resources
     public debug
 
     constructor(canvas: HTMLCanvasElement) {
@@ -28,7 +25,6 @@ export default class Experience {
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()
-        this.resources = new Resources(sources)
 
         //Camera
         this.camera = new Camera(this)
